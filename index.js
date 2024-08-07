@@ -1,43 +1,21 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildMembers,
-  ],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent // Only include if enabled
+    ]
 });
 
-const TOKEN = process.env.DISCORD_BOT_TOKEN;
-const GUILD_ID = process.env.DISCORD_GUILD_ID;
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+});
 
-client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-
-  const guild = client.guilds.cache.get(GUILD_ID);
-  if (!guild) {
-    console.log('Guild not found');
-    return;
-  }
-
-  // Reset permissions for all channels and categories
-  const channels = guild.channels.cache;
-  channels.forEach(async (channel) => {
-    try {
-      // Fetch the channel to ensure it's fully loaded
-      const fetchedChannel = await channel.fetch();
-
-      // Clone the channel and delete the old one to reset permissions
-      const newChannel = await fetchedChannel.clone();
-      await fetchedChannel.delete();
-
-      console.log(`Reset permissions for ${newChannel.name}`);
-    } catch (error) {
-      console.error(`Failed to reset permissions for ${channel.name}:`, error);
+client.on('messageCreate', msg => {
+    if (msg.content === 'ping') {
+        msg.reply('pong');
     }
-  });
-
-  console.log('Finished resetting permissions.');
-  process.exit();
 });
 
-client.login(TOKEN);
+// Use the token from the secret
+client.login(process.env.DISCORD_TOKEN);
