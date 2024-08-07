@@ -20,6 +20,6 @@ jobs:
 
       - name: Run reset permissions script
         env:
-          DISCORD_BOT_TOKEN: ${{ secrets.MTI3MDc2MTU0Mjc0NDUzOTI3OA.Gk5rX7.vNGQ6NUfStUWwtnhcNbxNyBLDA2CVOb93v_E1E }}
-          DISCORD_GUILD_ID: ${{ secrets.1270760112788733974 }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
         run: node index.js
