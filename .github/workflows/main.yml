@@ -1,0 +1,25 @@
+name: Reset Discord Permissions
+
+on:
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  reset-permissions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run reset permissions script
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.MTI3MDc2MTU0Mjc0NDUzOTI3OA.Gk5rX7.vNGQ6NUfStUWwtnhcNbxNyBLDA2CVOb93v_E1E }}
+          DISCORD_GUILD_ID: ${{ secrets.1270760112788733974 }}
+        run: node index.js
