@@ -7,8 +7,8 @@ const client = new Client({
   ],
 });
 
-const TOKEN = process.env.MTI3MDc2MTU0Mjc0NDUzOTI3OA.Gk5rX7.vNGQ6NUfStUWwtnhcNbxNyBLDA2CVOb93v_E1E;
-const GUILD_ID = process.env.1270760112788733974;
+const TOKEN = process.env.DISCORD_BOT_TOKEN;
+const GUILD_ID = process.env.DISCORD_GUILD_ID;
 
 client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -41,4 +41,3 @@ client.once('ready', async () => {
 });
 
 client.login(TOKEN);
-
