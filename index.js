@@ -1,5 +1,7 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-const keep_alive = require('./keep_alive.js')
+require('dotenv').config(); // Load environment variables if needed
+const keep_alive = require('./keep_alive.js'); // Ensure this file exists if using it
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -18,5 +20,5 @@ client.on('messageCreate', msg => {
     }
 });
 
-// Use the token from the secret
+// Use the token from the environment variable
 client.login(process.env.DISCORD_TOKEN);
