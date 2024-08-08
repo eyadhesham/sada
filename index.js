@@ -124,11 +124,11 @@ client.on('interactionCreate', async interaction => {
         // Create an embed message
         const embed = new EmbedBuilder()
             .setColor('#0099ff')
-            .setTitle('🏓 Pong!')
+            .setDescription(':ping_pong: **PONG!**')
             .addFields(
-                { name: 'Bot Latency', value: `${botLatency}ms`, inline: true },
-                { name: 'API Latency', value: `${apiLatency}ms`, inline: true },
-                { name: 'Status', value: apiLatency < 100 ? '🟢 Excellent' : apiLatency < 200 ? '🟡 Good' : '🔴 Poor', inline: true }
+                { name: ':hourglass: Bot Latency', value: `${botLatency}ms`, inline: true },
+                { name: ':hourglass: API Latency', value: `${apiLatency}ms`, inline: true },
+                { name: ':bar_chart: Status', value: apiLatency < 100 ? '🟢 Excellent' : apiLatency < 200 ? '🟡 Good' : '🔴 Poor', inline: true }
             )
             .setFooter({ text: 'Powered by Gyro Codes' })
             .setTimestamp();
