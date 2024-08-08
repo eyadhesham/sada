@@ -1,5 +1,5 @@
 const express = require('express');
-const { Client, GatewayIntentBits, REST, Routes, ChannelType } = require('discord.js');
+const { Client, GatewayIntentBits, REST, Routes, ChannelType, EmbedBuilder } = require('discord.js');
 
 const app = express();
 const client = new Client({
@@ -121,7 +121,19 @@ client.on('interactionCreate', async interaction => {
         // Get API latency
         const apiLatency = Math.round(client.ws.ping);
 
-        await interaction.reply(`🏓 Pong! Bot Latency: ${botLatency}ms, API Latency: ${apiLatency}ms`);
+        // Create an embed message
+        const embed = new EmbedBuilder()
+            .setColor('#0099ff')
+            .setTitle('🏓 Pong!')
+            .addFields(
+                { name: 'Bot Latency', value: `${botLatency}ms`, inline: true },
+                { name: 'API Latency', value: `${apiLatency}ms`, inline: true },
+                { name: 'Status', value: apiLatency < 100 ? '🟢 Excellent' : apiLatency < 200 ? '🟡 Good' : '🔴 Poor', inline: true }
+            )
+            .setFooter({ text: 'Powered by Gyro Codes' })
+            .setTimestamp();
+
+        await interaction.reply({ embeds: [embed] });
     }
 });
 
