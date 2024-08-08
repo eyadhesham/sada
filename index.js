@@ -118,8 +118,8 @@ client.on('interactionCreate', async interaction => {
         // Calculate bot latency
         const botLatency = Date.now() - interaction.createdTimestamp;
         
-        // Get API latency
-        const apiLatency = Math.round(client.ws.ping);
+        // Get API latency and ensure it is a positive number
+        const apiLatency = Math.max(Math.round(client.ws.ping), 0);
 
         // Create an embed message
         const embed = new EmbedBuilder()
