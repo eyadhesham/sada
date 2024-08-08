@@ -58,6 +58,10 @@ client.on('ready', async () => {
                     ]
                 }
             ]
+        },
+        {
+            name: 'ping',
+            description: 'Replies with Pong! Shows bot and API latency.'
         }
     ];
 
@@ -110,6 +114,14 @@ client.on('interactionCreate', async interaction => {
             const categoryNames = matchingCategories.map(c => c.name).join(', ');
             await interaction.reply({ content: `Multiple categories found: ${categoryNames}. Please provide a more specific name.`, ephemeral: true });
         }
+    } else if (commandName === 'ping') {
+        // Calculate bot latency
+        const botLatency = Date.now() - interaction.createdTimestamp;
+        
+        // Get API latency
+        const apiLatency = Math.round(client.ws.ping);
+
+        await interaction.reply(`🏓 Pong! Bot Latency: ${botLatency}ms, API Latency: ${apiLatency}ms`);
     }
 });
 
