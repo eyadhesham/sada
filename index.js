@@ -128,7 +128,7 @@ const embed = new EmbedBuilder()
     .addFields(
         { name: ':hourglass: Bot Latency', value: `\`\`\`${botLatency}ms\`\`\``, inline: true },
         { name: ':hourglass: API Latency', value: `\`\`\`${apiLatency}ms\`\`\``, inline: true },
-        { name: ':bar_chart: Status:', value: `${apiLatency < 100 ? ':green_circle: Excellent' : apiLatency < 200 ? ':yellow_circle: Good' : ':red_circle: Poor'} ${apiLatency < 100 ? 'Excellent' : apiLatency < 200 ? 'Good' : 'Poor'}`, inline: false }
+        { name: ':bar_chart: Status:', value: `${apiLatency < 100 ? ':green_circle: Excellent' : apiLatency < 200 ? ':yellow_circle: Good' : ':red_circle: Poor'}`, inline: false }
     )
     .setFooter({ text: 'Powered by Gyro Codes' })
     .setTimestamp();
