@@ -131,7 +131,7 @@ client.on('interactionCreate', async interaction => {
                 { 
     name: ':bar_chart: Status:', 
     value: `${apiLatency < 100 ? ':green_circle: Excellent' : apiLatency < 200 ? ':yellow_circle: Good' : ':red_circle: Poor'}`, 
-    inline: false 
+    inline: true 
                 }
 
 
